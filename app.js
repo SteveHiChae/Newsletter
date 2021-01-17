@@ -29,10 +29,6 @@ app.post('/', (req, res) => {
     ]
   }
 
-  app.post('/failure', (req, res) => {
-    res.redirect('/')
-  })
-
   const jsonData = JSON.stringify(data)
   const apiKey = process.env.API_KEY
   const listId = process.env.LIST_ID
@@ -61,6 +57,10 @@ app.post('/', (req, res) => {
   request.write(jsonData)
   request.end()
 
+})
+
+app.post('/failure', (req, res) => {
+  res.redirect('/')
 })
 
 app.listen(process.env.PORT || 3000, () => {
